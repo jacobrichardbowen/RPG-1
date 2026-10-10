@@ -1,0 +1,44 @@
+[
+ {
+  "fam": "Alegreya Sans",
+  "style": "normal",
+  "w": "400",
+  "url": "https://fonts.gstatic.com/s/alegreyasans/v28/5aUz9_-1phKLFgshYDvh6Vwt7VptvQ.woff2",
+  "file": "AlegreyaSans-400.woff2"
+ },
+ {
+  "fam": "Alegreya Sans",
+  "style": "normal",
+  "w": "500",
+  "url": "https://fonts.gstatic.com/s/alegreyasans/v28/5aUu9_-1phKLFgshYDvh6Vwt5alOqEp2iw.woff2",
+  "file": "AlegreyaSans-500.woff2"
+ },
+ {
+  "fam": "Alegreya Sans",
+  "style": "normal",
+  "w": "700",
+  "url": "https://fonts.gstatic.com/s/alegreyasans/v28/5aUu9_-1phKLFgshYDvh6Vwt5eFIqEp2iw.woff2",
+  "file": "AlegreyaSans-700.woff2"
+ },
+ {
+  "fam": "IM Fell English",
+  "style": "italic",
+  "w": "400",
+  "url": "https://fonts.gstatic.com/s/imfellenglish/v14/Ktk3ALSLW8zDe0rthJysWrnLsAzHFZOafYs.woff2",
+  "file": "IMFellEnglish-400i.woff2"
+ },
+ {
+  "fam": "IM Fell English",
+  "style": "normal",
+  "w": "400",
+  "url": "https://fonts.gstatic.com/s/imfellenglish/v14/Ktk1ALSLW8zDe0rthJysWrnLsAzHEKOY.woff2",
+  "file": "IMFellEnglish-400.woff2"
+ },
+ {
+  "fam": "IM Fell English SC",
+  "style": "normal",
+  "w": "400",
+  "url": "https://fonts.gstatic.com/s/imfellenglishsc/v16/a8IENpD3CDX-4zrWfr1VY879qFF05pZ7PIIP.woff2",
+  "file": "IMFellEnglishSC-400.woff2"
+ }
+]

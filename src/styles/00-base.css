@@ -1,0 +1,74 @@
+/* Layout: full-bleed 3D viewport with an HTML overlay for HUD and windows.
+   Single, deliberately dark theme: smoked umber panels, bronze trim, parchment for books. */
+:root {
+  color-scheme: dark;
+  --ink: #120e0a;
+  --panel: rgba(24, 18, 13, 0.92);
+  --panel-solid: #1d1712;
+  --panel-raise: #2a2119;
+  --bronze: #b4935c;
+  --bronze-hi: #e6c88c;
+  --bronze-dim: #6b5636;
+  --parchment: #eadbb8;
+  --parchment-dark: #d7c39a;
+  --parchment-ink: #3b2a17;
+  --text: #ece0c8;
+  --text-dim: #a7977b;
+  --health: #b83229;
+  --mana: #2f62b6;
+  --stamina: #3f8c3b;
+  --xp: #8b4fc2;
+  --gold: #ffd35c;
+  --quest: #ffd100;
+  --danger: #ff5a46;
+  --good: #7cdc6a;
+  --q-poor: #9d9d9d;
+  --q-common: #ffffff;
+  --q-uncommon: #1eff00;
+  --q-rare: #2f8cff;
+  --q-epic: #b552ff;
+  --q-quest: #ffd100;
+  --font-display: 'IM Fell English SC', 'Palatino Linotype', Palatino, Georgia, serif;
+  --font-book: 'IM Fell English', 'Palatino Linotype', Palatino, Georgia, serif;
+  --font-body: 'Alegreya Sans', 'Segoe UI', 'Trebuchet MS', system-ui, sans-serif;
+  --radius: 3px;
+  --shadow: 0 6px 24px rgba(0, 0, 0, 0.55);
+}
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html, body { height: 100%; margin: 0; overflow: hidden; }
+body {
+  background: var(--ink);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 15px;
+  -webkit-font-smoothing: antialiased;
+  user-select: none;
+  -webkit-user-select: none;
+}
+#app { position: fixed; inset: 0; overflow: hidden; }
+#viewport { position: absolute; inset: 0; }
+#viewport canvas { display: block; outline: none; }
+#ui { position: absolute; inset: 0; pointer-events: none; }
+#ui > * { pointer-events: auto; }
+#ui .passthrough { pointer-events: none; }
+button { font-family: inherit; }
+:focus-visible { outline: 2px solid var(--bronze-hi); outline-offset: 2px; }
+
+.boot {
+  position: absolute; inset: 0; display: grid; place-items: center; z-index: 100;
+  background: radial-gradient(ellipse at 50% 40%, #2a2a2e 0%, #121014 70%);
+  transition: opacity 0.8s ease;
+}
+.boot.done { opacity: 0; pointer-events: none; }
+.boot-inner { text-align: center; width: min(460px, 86vw); }
+.boot-title { font-family: var(--font-display); font-size: clamp(34px, 6vw, 58px); color: var(--bronze-hi); letter-spacing: 0.04em; text-shadow: 0 2px 18px rgba(0,0,0,0.8); }
+.boot-sub { font-family: var(--font-book); font-style: italic; color: var(--text-dim); margin-top: 4px; font-size: 18px; }
+.boot-bar { margin: 28px auto 10px; height: 6px; border: 1px solid var(--bronze-dim); background: rgba(0,0,0,0.4); border-radius: 3px; overflow: hidden; }
+#boot-fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--bronze-dim), var(--bronze-hi)); transition: width 0.25s ease; }
+.boot-msg { color: var(--text-dim); font-size: 14px; letter-spacing: 0.04em; min-height: 1.2em; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}

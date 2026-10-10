@@ -1,0 +1,16 @@
+{
+  "name": "brackwater-rpg",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Isle of Brackwater: a 3D RPG vertical slice. Build produces a single double-clickable Play.html.",
+  "type": "module",
+  "scripts": {
+    "build": "node tools/build.mjs",
+    "dev": "node tools/build.mjs --watch",
+    "check": "node tools/smoke-test.mjs"
+  },
+  "devDependencies": {
+    "esbuild": "0.25.12",
+    "three": "0.170.0"
+  }
+}
