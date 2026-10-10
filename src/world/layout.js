@@ -85,6 +85,7 @@ export const SHIP = { x: 25.5, z: 241, rot: 0, deckY: 2.1, length: 22, beam: 7 }
 // Spawn point for a new game (on the ship deck) and respawn point after death.
 export const PLAYER_START = { x: 24.0, z: 241.0, facing: -Math.PI / 2 };
 export const RESPAWN = { x: 10, z: 166 };
+export const TOR_CHECKPOINT = { x: 20, z: -64 };
 
 // Enemy spawn groups. Each spawn has a creature type, position and wander radius.
 export const SPAWNS = [
@@ -110,7 +111,7 @@ export const SPAWNS = [
   { type: 'cult_adept', x: 38, z: -110, wander: 2, level: 4 },
   { type: 'cult_adept', x: 36, z: -142, wander: 2, level: 5 },
   { type: 'cult_adept', x: 22, z: -150, wander: 2, level: 5 },
-  { type: 'morwen', x: 30, z: -156, wander: 0, level: 6, respawn: 0 },
+  { type: 'morwen', x: 30, z: -143.5, wander: 0, level: 6, respawn: 0 },
 ];
 
 // Gatherable herbs (glowcaps) in the fen.

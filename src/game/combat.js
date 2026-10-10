@@ -134,7 +134,7 @@ export function dealDamage(game, src, tgt, amount, opts = {}) {
     const txt = dmg > 0 ? `${dmg}${opts.crit ? '!' : ''}` : '';
     game.fct(tgt, absorbed ? `${txt}${txt ? ' ' : ''}(${absorbed} absorbed)` : txt, tgt.isPlayer ? 'taken' : opts.crit ? 'crit' : 'dmg', SCHOOL_COLORS[school]);
     if (!opts.periodic && dmg > 0) {
-      tgt.visual.flash(tgt.isPlayer ? 0xff2020 : 0xffffff, 0.1);
+      tgt.visual.flash(tgt.isPlayer ? 0xb02010 : 0xffffff, 0.08);
       if (!tgt.cast && Math.random() < 0.6) tgt.visual.play('hit', 0.35);
     }
     if (tgt.isPlayer && dmg > tgt.maxHp * 0.12) game.rig.shake = Math.min(1, game.rig.shake + 0.5);

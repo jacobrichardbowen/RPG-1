@@ -479,7 +479,7 @@ export function buildSpire() {
   for (let i = 0; i < 3; i++) g.add(box(5, 0.2, 1, stone, { y: -0.3 - i * 0.25, z: 16.6 + i * 0.9 }));
   g.userData.colliders = c;
   g.userData.lights = [];
-  g.userData.spots = { eye: { x: 0, z: -2, y: 9, rot: 0 }, boss: { x: 0, z: -6, rot: 0 } };
+  g.userData.spots = { eye: { x: 0, z: 0, y: 11, rot: 0 }, boss: { x: 0, z: 8.5, rot: 0 } };
   return finish(g, 'spire');
 }
 

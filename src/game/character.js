@@ -71,7 +71,7 @@ export class CharacterSheet {
       this.weapon = { dmg: [1, 3], speed: 2.0, wtype: 'fist' };
     }
     const stat = this.weapon.wtype === 'dagger' ? a.agi : this.weapon.wtype === 'staff' ? (a.str + a.int) * 0.5 : a.str;
-    this.weaponBonus = stat * 0.2 * this.weapon.speed;
+    this.weaponBonus = stat * (this.cls === 'warrior' ? 0.27 : 0.22) * this.weapon.speed;
   }
 
   weaponRoll() {

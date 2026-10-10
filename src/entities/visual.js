@@ -240,7 +240,7 @@ export class Visual {
           m.userData.baseEmissive = m.material.emissive.getHex();
           m.userData.baseEI = m.material.emissiveIntensity;
         }
-        if (on) { m.material.emissive.setHex(this.flashColor); m.material.emissiveIntensity = 0.6; }
+        if (on) { m.material.emissive.setHex(this.flashColor); m.material.emissiveIntensity = 0.35; }
         else { m.material.emissive.setHex(m.userData.baseEmissive); m.material.emissiveIntensity = m.userData.baseEI; }
       });
     }

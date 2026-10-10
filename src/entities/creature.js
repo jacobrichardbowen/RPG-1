@@ -330,7 +330,7 @@ export class Creature extends Unit {
       this.abilityT.wave = 1;
     }
     if (this.phase >= 1 && this.abilityT.wave <= 0 && !this.cast) {
-      this.abilityT.wave = this.phase >= 2 ? 9 : 13;
+      this.abilityT.wave = this.phase >= 2 ? 11 : 14;
       const t = this.target;
       const center = { x: t.pos.x, z: t.pos.z };
       g.fx?.telegraph(center, 5, 2.6, 0x40e0ff);
@@ -338,7 +338,7 @@ export class Creature extends Unit {
       g.after(2.6, () => {
         if (!this.alive) return;
         for (const u of g.hostilesOf(this, center, 5)) {
-          dealDamage(g, this, u, u.maxHp * 0.38, { school: 'shadow', name: 'Drowning Wave' });
+          dealDamage(g, this, u, u.maxHp * 0.25, { school: 'shadow', name: 'Drowning Wave' });
           addEffect(g, u, { id: 'slow', name: 'Waterlogged', slow: 0.4, dur: 3, harmful: true, icon: 'icon_fx_slow' });
         }
         g.fx?.pillar(center, 5, 0x40e0ff);

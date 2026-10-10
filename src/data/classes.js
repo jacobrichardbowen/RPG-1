@@ -37,8 +37,8 @@ export const ABILITIES = {
   // ------------------------------------------------------------------ warrior
   cleave: {
     name: 'Cleave', cls: 'warrior', cost: { st: 12 }, cd: 3, range: 'melee', target: 'enemy', anim: 'slash', sound: 'swing',
-    desc: 'A heavy swing dealing 160% weapon damage to your target and 70% to one other nearby enemy.',
-    effects: [{ type: 'weapon', mult: 1.6 }, { type: 'cleave', mult: 0.7, radius: 4.5, count: 1 }], icon: ['slash', 0xd08040],
+    desc: 'A heavy swing dealing 180% weapon damage to your target and 70% to one other nearby enemy.',
+    effects: [{ type: 'weapon', mult: 1.8 }, { type: 'cleave', mult: 0.7, radius: 4.5, count: 1 }], icon: ['slash', 0xd08040],
   },
   concussive_bash: {
     name: 'Concussive Bash', cls: 'warrior', cost: { st: 18 }, cd: 12, range: 'melee', target: 'enemy', anim: 'stab', sound: 'bash',
@@ -68,14 +68,14 @@ export const ABILITIES = {
 
   // ------------------------------------------------------------------ mage
   firebolt: {
-    name: 'Firebolt', cls: 'mage', cost: { mana: 14 }, cd: 0, cast: 1.6, range: 32, target: 'enemy', anim: 'cast', sound: 'fire',
-    desc: 'Hurl a bolt of flame for 14 to 19 fire damage, plus 85% of your spell power.',
-    effects: [{ type: 'projectile', color: 0xff7a20, speed: 30, size: 0.35, onHit: [{ type: 'spell', base: [14, 19], coef: 0.85, school: 'fire' }] }], icon: ['flame', 0xff7a20],
+    name: 'Firebolt', cls: 'mage', cost: { mana: 14 }, cd: 0, cast: 1.8, range: 32, target: 'enemy', anim: 'cast', sound: 'fire',
+    desc: 'Hurl a bolt of flame for 11 to 15 fire damage, plus 70% of your spell power.',
+    effects: [{ type: 'projectile', color: 0xff7a20, speed: 30, size: 0.35, onHit: [{ type: 'spell', base: [11, 15], coef: 0.7, school: 'fire' }] }], icon: ['flame', 0xff7a20],
   },
   frost_lance: {
     name: 'Frost Lance', cls: 'mage', cost: { mana: 12 }, cd: 5, cast: 0, range: 30, target: 'enemy', anim: 'cast', sound: 'frost',
-    desc: 'Instantly fling a shard of ice for 9 to 12 frost damage, plus 50% of spell power, slowing the target by 50% for 4 sec.',
-    effects: [{ type: 'projectile', color: 0x9ae0ff, speed: 40, size: 0.25, onHit: [{ type: 'spell', base: [9, 12], coef: 0.5, school: 'frost' }, { type: 'slow', pct: 0.5, dur: 4 }] }], icon: ['shard', 0x9ae0ff],
+    desc: 'Instantly fling a shard of ice for 7 to 9 frost damage, plus 40% of spell power, slowing the target by 50% for 4 sec.',
+    effects: [{ type: 'projectile', color: 0x9ae0ff, speed: 40, size: 0.25, onHit: [{ type: 'spell', base: [7, 9], coef: 0.4, school: 'frost' }, { type: 'slow', pct: 0.5, dur: 4 }] }], icon: ['shard', 0x9ae0ff],
   },
   counterspell: {
     name: 'Counterspell', cls: 'mage', cost: { mana: 10 }, cd: 15, cast: 0, range: 30, target: 'enemy', anim: 'cast', sound: 'arcane', offGcd: true,

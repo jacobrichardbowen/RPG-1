@@ -26,7 +26,7 @@ import { LOOT } from '../data/loot.js';
 import { QUESTS } from '../data/quests.js';
 import { NPCS, WIZARD_LOOK, PELL_BODY } from '../data/npcs.js';
 import { RACES } from '../assets/placeholders/characters.js';
-import { PLAYER_START, RESPAWN, SPAWNS, HERBS, CONTAINERS, ZONES, WIZARD_FALL, PROPS } from '../world/layout.js';
+import { PLAYER_START, RESPAWN, TOR_CHECKPOINT, SPAWNS, HERBS, CONTAINERS, ZONES, WIZARD_FALL, PROPS } from '../world/layout.js';
 import { registry } from '../assets/registry.js';
 
 const SAVE_KEY = 'brackwater.save.v1';
@@ -448,12 +448,9 @@ export class Game {
     const dragging = input.mouseDown(0) || input.mouseDown(2);
     if ((dragging || input.pointerLocked) && !ui.modalOpen()) this.rig.rotate(input.mouse.dx, input.mouse.dy);
     if (input.mouse.wheel && !ui.pointerOverUi) this.rig.zoom(input.mouse.wheel);
-    if (input.mouseDown(2) && !input.pointerLocked && input.mouse.dragDist > 10 && !this._rmbLock) {
-      this._rmbLock = true;
-      input.requestLock();
-    }
-    if (!input.mouseDown(2) && this._rmbLock) { this._rmbLock = false; if (!this.mouselook) input.exitLock(); }
-    if (this.mouselook && !input.pointerLocked && !ui.modalOpen() && this._wantLock) { input.requestLock(); this._wantLock = false; }
+    // Leaving pointer lock (Esc, alt-tab) also leaves mouse-look mode.
+    if (this.mouselook && !input.pointerLocked && this._lockSeen) { this.mouselook = false; this._lockSeen = false; this.ui.setCrosshair(false); }
+    if (input.pointerLocked) this._lockSeen = true;
     // Movement (disabled while rooted/dashing/dead).
     let res = { moving: false };
     if (p.dash) this.updateDash(p, dt);
@@ -550,7 +547,8 @@ export class Game {
 
   toggleMouselook() {
     this.mouselook = !this.mouselook;
-    if (this.mouselook) { this.input.requestLock(); this.ui.toast('Mouse-look on. Press T to release the cursor.', 2.5); }
+    this._lockSeen = false;
+    if (this.mouselook) { this.input.requestLock(); this.ui.toast('Mouse-look on. Press T or Esc to release the cursor.', 2.5); }
     else { this.input.exitLock(); }
     this.ui.setCrosshair(this.mouselook);
   }
@@ -917,14 +915,17 @@ export class Game {
     const p = this.player;
     p.alive = true;
     p.visual.play('revive');
-    p.setPosition(RESPAWN.x, RESPAWN.z);
+    // During the final quest you wake at the foot of the Tor instead of back in the village.
+    const nearTor = this.questActive('spire') && this.questStage('spire') === 2 && Math.hypot(p.pos.x - 30, p.pos.z + 150) < 90;
+    if (nearTor) p.setPosition(TOR_CHECKPOINT.x, TOR_CHECKPOINT.z);
+    else p.setPosition(RESPAWN.x, RESPAWN.z);
     p.hp = Math.round(p.maxHp * 0.6);
     p.mana = Math.round(p.maxMana * 0.6);
     p.effects = [];
     this.recomputePlayer();
     this.rig.snapTo(p.pos);
     this.fx.sparkle(p, 0x80d0ff);
-    this.log('You wake beside the Shrine of the Tide, soaked and shivering.', 'system');
+    this.log(nearTor ? 'You wake on the slope below the Tor, bruised but breathing.' : 'You wake beside the Shrine of the Tide, soaked and shivering.', 'system');
   }
 
   yell(unit, text) {

@@ -538,13 +538,13 @@ export class UI {
           this.layers.plates.append(pl.el);
           this.plates.set(u.id, pl);
         }
-        const hostile = u.isCreature && u.faction === 'hostile' && u.alive;
+        const hostile = !!(u.isCreature && u.faction === 'hostile' && u.alive);
         pl.name.textContent = u.isNpc && u.title ? `${u.name}` : u.name;
         pl.el.title = '';
         pl.el.classList.toggle('npc', !!u.isNpc);
         pl.el.classList.toggle('hostile', hostile);
         pl.el.classList.toggle('targeted', g.target === u);
-        pl.el.classList.toggle('combat', u.isCreature && u.state === 'combat');
+        pl.el.classList.toggle('combat', !!(u.isCreature && u.state === 'combat'));
         pl.hp.hidden = !u.isCreature || !u.alive || (u.hp >= u.maxHp && g.target !== u && u.state !== 'combat');
         if (!pl.hp.hidden) pl.hp.firstChild.style.width = `${(u.hp / u.maxHp) * 100}%`;
         const fade = Math.max(0.35, 1 - dist / 45);
